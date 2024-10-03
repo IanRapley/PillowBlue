@@ -60,6 +60,8 @@ function letsdothis() {
 	PostPillow(src)
 }
 
+letsdothis;
+
 const scheduleExpressionMinute = '* * * * *'; // Run once every minute for testing
 const scheduleExpression = '0 */6 * * *'; // Run once every three hours in prod
 const job = new CronJob(scheduleExpression, letsdothis);
