@@ -1,21 +1,14 @@
-// import bsky from '@atproto/api';
-// const { BskyAgent } = bsky;
-// import * as dotenv from 'dotenv';
-// import { CronJob } from 'cron';
-// import * as process from 'process';
-// import * as unparse from 'nearley-unparse' //uses nearly grammar for madlibs
-
-var bsky = require("@atproto/api"); 
-var dotenv = require("dotenv"); 
-var cron = require("cron"); 
-var process = require("process"); 
+var bsky = require("@atproto/api"); // import bsky from '@atproto/api';
+var dotenv = require("dotenv"); // import * as dotenv from 'dotenv';
+var cron = require("cron"); // import { CronJob } from 'cron';
+var process = require("process"); // import * as process from 'process';
+const request = require('request');
 var express = require('express');
-var unparse = require("nearley-unparse"); //uses nearly grammar for madlibs
+var unparse = require("nearley-unparse"); // import * as unparse from 'nearley-unparse' //uses nearly grammar for madlibs
 
 const { BskyAgent } = bsky;
 const { CronJob } = cron;
 dotenv.config();
-
 var grammarA = require("./grammar"); // Can update the grammar to get better lists
 var grammarB = require("./Grammar-poetry.js"); 
 
@@ -25,8 +18,6 @@ var port = process.env.PORT || 8080;    // Needed to ensure heroku can listen to
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
-
-
 
 // Create a Bluesky Agent 
 const agent = new BskyAgent({
@@ -65,8 +56,21 @@ function letsdothis() {
 
 letsdothis;
 
+// hopefully stops heroku timeout
+var reqTimer = setTimeout(function wakeUp() {
+   request("https://pillowbot-c8d50915d811.herokuapp.com", function() {
+      console.log("WAKE UP DYNO");
+   });
+   return reqTimer = setTimeout(wakeUp, 1200000);
+}, 1200000);
+
+
+
 // retweet in every 5 minutes (300,000) 6 hours (21,600,000)
 setInterval(letsdothis, 21600000);
+
+
+
 
 // const scheduleExpressionMinute = '* * * * *'; // Run once every minute for testing
 // const scheduleExpression = '0 */6 * * *'; // Run once every three hours in prod
