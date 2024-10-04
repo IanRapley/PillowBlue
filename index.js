@@ -33,11 +33,14 @@ const agent = new BskyAgent({
     service: 'https://bsky.social',
 });
 
+const BSLog = process.env.BLUESKY_LOGIN
+const BSPass = process.env.BLUESKY_PASSWORD
+
 // Basic post to Bluesky
 async function PostPillow(Pillowtext) {
 	await agent.login({
-		identifier: process.env.BLUESKY_LOGIN,
-		password: process.env.BLUESKY_PASSWORD,
+		identifier: BSLog,
+		password: BSPass,
 	});
 	const response = await agent.post({
         text: Pillowtext
