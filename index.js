@@ -20,13 +20,12 @@ var grammarA = require("./grammar"); // Can update the grammar to get better lis
 var grammarB = require("./Grammar-poetry.js"); 
 
 
-// var app = express();
-// var port = process.env.PORT || 8080;    // Needed to ensure heroku can listen to the right port - not needed for local running
-// app.listen(port, function() {
-//     console.log('Our app is running on http://localhost:' + port);
-// });
+var app = express();
+var port = process.env.PORT || 8080;    // Needed to ensure heroku can listen to the right port - not needed for local running
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
 
-const port = process.env.PORT || "8080";
 
 
 // Create a Bluesky Agent 
