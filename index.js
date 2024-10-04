@@ -39,8 +39,8 @@ const BSPass = process.env.BLUESKY_PASSWORD;
 // Basic post to Bluesky
 async function PostPillow(Pillowtext) {
 	await agent.login({
-		identifier: BSLog,
-		password: BSPass,
+		identifier: 'thepillowbot.bsky.social',
+		password: 'Makura1',
 	});
 	const response = await agent.post({
         text: Pillowtext
