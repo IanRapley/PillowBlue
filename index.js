@@ -25,7 +25,8 @@ var grammarB = require("./Grammar-poetry.js");
 // app.listen(port, function() {
 //     console.log('Our app is running on http://localhost:' + port);
 // });
-// const port = process.env.PORT || "8080";
+
+const port = process.env.PORT || "8080";
 
 
 // Create a Bluesky Agent 
