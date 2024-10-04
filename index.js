@@ -66,7 +66,7 @@ function letsdothis() {
 letsdothis;
 
 // retweet in every 5 minutes (300,000) 6 hours (21,600,000)
-setInterval(letsdothis, 300000);
+setInterval(letsdothis, 21600000);
 
 // const scheduleExpressionMinute = '* * * * *'; // Run once every minute for testing
 // const scheduleExpression = '0 */6 * * *'; // Run once every three hours in prod
